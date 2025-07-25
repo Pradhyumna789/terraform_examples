@@ -1,0 +1,10 @@
+terraform init => initialize configuration file => do this again if added new resources
+terraform plan 
+terraform apply => create resources
+terraform output => lists all output variables
+terraform output variable_name => lists the value
+terraform providers => lists all providers
+terraform show
+
+In terraform-local-file => after terraform apply => terraform.tfstate => json-file which contains complete infrastructure created by terraform 
+
