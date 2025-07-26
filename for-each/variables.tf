@@ -6,4 +6,3 @@ variable "pets" {
         "pigs.txt" = "I am pig"
     }
 }
-
