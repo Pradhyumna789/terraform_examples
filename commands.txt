@@ -26,6 +26,10 @@ terraform apply -refresh-only(only modifies state file not infrastructure resour
 
 terraform graph => creates visual representation of dependencies used in a terraform configuration or an execution plan
 
+terraform console => type(resource_type.resource_name) or type(resource_type.resource_name.filename) => To check the type of resource or the resource's file 
+
+
+
 /* 
 To convert terraform graph into a visual format
   - apt update
@@ -34,8 +38,4 @@ To convert terraform graph into a visual format
   - open the graph.svg file and you should see a diagram like repesentation of the dependencies
 */
 
-
-
 In configuration directory => after terraform apply => terraform.tfstate => json-file which contains complete infrastructure created by terraform => should store this in remote state backends like AWS S3 while working in teams 
-
-
