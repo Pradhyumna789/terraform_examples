@@ -1,10 +1,41 @@
 terraform init => initialize configuration file => do this again if added new resources
-terraform plan 
-terraform apply => create resources
-terraform output => lists all output variables
-terraform output variable_name => lists the value
-terraform providers => lists all providers
-terraform show
 
-In terraform-local-file => after terraform apply => terraform.tfstate => json-file which contains complete infrastructure created by terraform 
+terraform plan 
+
+terraform apply => create resources
+
+terraform output => lists all output variables
+
+terraform output variable_name => lists the value
+
+terraform providers => lists all providers used in the configuration directory
+
+terraform show => current state of infrastructure as seen by terraform all resources along with their attributes
+
+terraform show -json 
+
+terraform state show local_file.file(resource_type.resource_name)
+
+terraform validate => check syntax
+
+terraform fmt => converts into a readable format
+
+terraform providers mirror /root/terraform/new-local-file => copies provider plugins to another directory
+
+terraform apply -refresh-only(only modifies state file not infrastructure resources) => any changes made to the resource created by terraform outside it's control such as a manual update? This command will update the state to the latest real world infrastructure
+
+terraform graph => creates visual representation of dependencies used in a terraform configuration or an execution plan
+
+/* 
+To convert terraform graph into a visual format
+  - apt update
+  - apt install graphviz -y
+  - terraform graph | dot -Tsvg > graph.svg
+  - open the graph.svg file and you should see a diagram like repesentation of the dependencies
+*/
+
+
+
+In configuration directory => after terraform apply => terraform.tfstate => json-file which contains complete infrastructure created by terraform => should store this in remote state backends like AWS S3 while working in teams 
+
 
