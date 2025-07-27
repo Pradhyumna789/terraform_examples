@@ -2,4 +2,4 @@
 - for-each
 - version-constraints
 - Provisioning-AWS-IAM-Using-Terraform
-- Provisioning-AWS
+- Provisioning-AWS-S3-Buckets-Using-Terraform
