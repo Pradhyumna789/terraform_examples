@@ -1,34 +1,33 @@
 terraform init => initialize configuration file => do this again if added new resources
-
 terraform plan 
-
 terraform apply => create resources
-
 terraform output => lists all output variables
-
 terraform output variable_name => lists the value
-
 terraform providers => lists all providers used in the configuration directory
-
 terraform show => current state of infrastructure as seen by terraform all resources along with their attributes
-
 terraform show -json 
-
 terraform state show local_file.file(resource_type.resource_name)
-
 terraform validate => check syntax
-
 terraform fmt => converts into a readable format
-
 terraform providers mirror /root/terraform/new-local-file => copies provider plugins to another directory
-
 terraform apply -refresh-only(only modifies state file not infrastructure resources) => any changes made to the resource created by terraform outside it's control such as a manual update? This command will update the state to the latest real world infrastructure
-
 terraform graph => creates visual representation of dependencies used in a terraform configuration or an execution plan
-
 terraform console => type(resource_type.resource_name) or type(resource_type.resource_name.filename) => To check the type of resource or the resource's file 
+terraform state list => lists all resources in the state file
+terraform state show <resource> => lists all attributes of a resource in the state file
+terraform state mv aws_s3_bucket.<resource_name> aws_s3_bucket.<changed_resource_name>
+terraform state pull => pulls remote state
+terraform state rm <resource.resource_name> => deletes items from the state file
+terraform taint <resource> and terraform untaint <resource> => If a resource creation fails after running "terraform apply" => terraform will mark it as tainted, this can be seen when we run "terraform apply" cmd again and therefore terraform will attempt to recreate it in the subsequent apply
 
+terraform debugging:
+export TF_LOG=<log_level> (log_level = INFO, WARNING, ERROR, DEBUG, TRACE) and export TF_LOG_PATH=/tmp/terraform.log => store the logs in a log-file and terraform apply
+unset TF_LOG or unset TL_LOG_PATH => disable logging completely
 
+/*
+  terraform taint use case:
+  consider we need to update nginx version from 1.17.1 to 1.17.2 instead of doing terraform destroy and create it we can do terraform taint so that it can be recreated in the next apply
+*/
 
 /* 
 To convert terraform graph into a visual format
@@ -38,4 +37,7 @@ To convert terraform graph into a visual format
   - open the graph.svg file and you should see a diagram like repesentation of the dependencies
 */
 
-In configuration directory => after terraform apply => terraform.tfstate => json-file which contains complete infrastructure created by terraform => should store this in remote state backends like AWS S3 while working in teams 
+In configuration directory => after terraform apply => terraform.tfstate => json-file which contains complete infrastructure created by terraform => should store this in remote state backends like AWS S3 while working in teams(look RemoteState directory) 
+
+terraform import <resource.resource_name> <id> => this will update the state file and not the configuration file => infact it will throw an error that nothing like this resource is actually in the configuration file => so create an empty resource block with that resource type in the .tf file and name and run terraform init cmd again => then do terraform import again and you should see the state file updated with no configuration error => now go to state file and copy and paste the attributes of the resource into the resource block in the .tf file
+

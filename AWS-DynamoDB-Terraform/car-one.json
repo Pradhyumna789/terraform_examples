@@ -1,0 +1,7 @@
+{
+    "Manufacturer": {"S": "Rolls Royce"},
+    "Number": {"N": "1"},
+    "Model": {"S": "Phantom"},
+    "hash_key": {"S": "TestTableHashKey"}
+}
+

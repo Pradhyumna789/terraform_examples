@@ -1,5 +1,12 @@
 - count
-- for-each
-- version-constraints
-- Provisioning-AWS-IAM-Using-Terraform
-- Provisioning-AWS-S3-Buckets-Using-Terraform
+- for each
+- Version Constraints
+- Provisioning AWS-IAM Using Terraform
+- Provisioning AWS-S3-Buckets Using Terraform
+- Provisioning AWS-DynamoDB Using Terraform
+- Remote-State
+- Provisioners-And-EC2
+- terraform taint and terraform untaint(look commands.txt)
+- terraform debugging(look commands.txt) 
+- terraform import(look commands.txt)
+
