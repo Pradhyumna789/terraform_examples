@@ -12,7 +12,7 @@ terraform fmt => converts into a readable format
 terraform providers mirror /root/terraform/new-local-file => copies provider plugins to another directory
 terraform apply -refresh-only(only modifies state file not infrastructure resources) => any changes made to the resource created by terraform outside it's control such as a manual update? This command will update the state to the latest real world infrastructure
 terraform graph => creates visual representation of dependencies used in a terraform configuration or an execution plan
-terraform console => type(resource_type.resource_name) or type(resource_type.resource_name.filename) => To check the type of resource or the resource's file 
+terraform console(used to test terraform functions) => type(resource_type.resource_name) or type(resource_type.resource_name.filename) => To check the type of resource or the resource's file 
 terraform state list => lists all resources in the state file
 terraform state show <resource> => lists all attributes of a resource in the state file
 terraform state mv aws_s3_bucket.<resource_name> aws_s3_bucket.<changed_resource_name>
@@ -41,3 +41,10 @@ In configuration directory => after terraform apply => terraform.tfstate => json
 
 terraform import <resource.resource_name> <id> => this will update the state file and not the configuration file => infact it will throw an error that nothing like this resource is actually in the configuration file => so create an empty resource block with that resource type in the .tf file and name and run terraform init cmd again => then do terraform import again and you should see the state file updated with no configuration error => now go to state file and copy and paste the attributes of the resource into the resource block in the .tf file
 
+terraform get => if you're using an existing module but already have all the resources in your local environment that are defined in the module then you should execute this command instead of terraform init
+
+terraform workspace new <workspace-name>(eg-ProjectB created from ProjectA workspace) => using workspaces we can create multiple infrastructure environments using the same configuration directory
+terraform workspace list => lists all the available workspaces
+terraform workspace select <workspace-name>
+
+when using workspaces terraform stores the state file in a separate directory called terraform.tfstate.d

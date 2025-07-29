@@ -9,4 +9,5 @@
 - terraform taint and terraform untaint(look commands.txt)
 - terraform debugging(look commands.txt) 
 - terraform import(look commands.txt)
-
+- terraform modules
+- terraform workspace
